@@ -2,17 +2,17 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  HostListener,
-  Input,
   OnInit,
-  Output,
   ViewChild,
 } from '@angular/core';
-import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
+import { MatDrawer } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/models/user.class';
 import { AuthService } from '../services/auth.service';
 import { ThreadService } from '../services/thread.service';
+import { ProfilComponent } from '../profil/profil.component';
+import { ProfilServiceService } from '../services/profil-service.service';
 
 @Component({
   selector: 'app-slack-app',
@@ -30,7 +30,9 @@ export class SlackAppComponent implements OnInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     public threadService: ThreadService,
-    public el: ElementRef
+    public profilService: ProfilServiceService,
+    public el: ElementRef,
+    public dialog: MatDialog
   ) {}
 
   ngAfterViewInit(): void {
@@ -44,7 +46,13 @@ export class SlackAppComponent implements OnInit, AfterViewInit {
     this.route.paramMap.subscribe((paramMap) => {
       this.userId = paramMap.get('id');
       this.authService.getUser(this.userId);
+      //console.log(this.userId);
+      this.profilService.users = this.userId;
     });
+  }
+
+  openDialog(): void {
+    this.dialog.open(ProfilComponent);
   }
 
   logOut() {

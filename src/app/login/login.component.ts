@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
   }
 
   async createUser() {
-    const { email, password, userNames } = this.signUpForm.value;
+    const { email, password, userNames, uID } = this.signUpForm.value;
 
     await this.authService.signUp(email, password).subscribe(
       () => {

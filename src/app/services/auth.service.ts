@@ -15,7 +15,7 @@ export class AuthService {
   user = new User();
   message: string = 'Login';
   guest: string = 'Guest';
-  login = false; //TODO auf false setzen bevor ich deploy
+  login = true; //TODO auf false setzen bevor ich deploy
 
   constructor(
     public _auth: Auth,
@@ -45,6 +45,11 @@ export class AuthService {
               this.login = true;
               this.message = 'Logout';
               this.router.navigateByUrl(`/slack/${result[i]['id']}`);
+            } else {
+              this.msg.open(
+                'User not found! Register please or Enter right Name or Password',
+                'Close'
+              );
             }
           } catch (err) {
             if (err) {
@@ -104,6 +109,7 @@ export class AuthService {
         .valueChanges()
         .subscribe((user: any) => {
           this.user = new User(user);
+          console.log(this.user);
         });
     }
   }

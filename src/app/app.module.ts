@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Components
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ChannelBoxComponent } from './sidebar/channel-box/channel-box.component';
@@ -32,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ResizableModule } from 'angular-resizable-element';
 
 //Firebase
@@ -46,11 +46,11 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     ResizableDirective,
     MainComponent,
     SidebarComponent,
@@ -60,6 +60,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     LoginComponent,
     SlackAppComponent,
     DialogAddChannelComponent,
+    ProfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +76,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     MatProgressBarModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
